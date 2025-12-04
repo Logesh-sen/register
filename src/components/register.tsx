@@ -334,8 +334,8 @@ function Register() {
             </Label>
             <Textarea
               placeholder="Enter Address"
-              className="break-words"
               rows={3}
+              className="break-words h-20"
               {...register("address")}
             />
             <div className="h-5">
