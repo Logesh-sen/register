@@ -3,8 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SparklesText } from "@/components/ui/sparkles-text";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 import { z } from "zod";
 import {
   Select,
@@ -45,6 +45,7 @@ const userSchema = z.object({
     .string()
     .regex(/^ZMR(00[1-9]|0[1-9][0-9]|[1-4][0-9]{2})$/, "Employee ID not found"),
 });
+
 type FormData = z.infer<typeof userSchema>;
 
 interface PostalApi {
@@ -243,7 +244,7 @@ function Register() {
                 </Button>
                 <Button
                   type="button"
-                  className="bg-ring hover:bg-ring text-white cursor-pointer"
+                  className="bg-card hover:bg-card text-foreground cursor-pointer"
                   onClick={handleClear}
                 >
                   Clear
@@ -258,12 +259,14 @@ function Register() {
           className="w-[460px] bg-card text-card-foreground shadow-lg rounded-lg p-8 space-y-6 border border-border"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex justify-between align-center">
-            <SparklesText className="text-4xl font-bold text-center mb-2">
+            <div className="relative mb-6 flex justify-center items-center">
+            <AnimatedGradientText className="text-3xl font-bold text-center">
               Employee Register
-            </SparklesText>
-            <AnimatedThemeToggler type="button" className="" />
-          </div>
+            </AnimatedGradientText>
+            <div className="absolute top-[-10px] right-[-8px]">
+              <AnimatedThemeToggler type="button" />
+            </div>
+            </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
             <div className="flex-1">
               <Label className="flex flex-col items-start gap-2 text-sm font-medium text-foreground">
@@ -425,13 +428,13 @@ function Register() {
           <div className="flex justify-center gap-4">
             <Button
               type="submit"
-              className="bg-chart-1 hover:bg-chart-1 text-white cursor-pointer"
+              className="bg-chart-5 hover:bg-chart-1 text-white cursor-pointer"
             >
               Submit
             </Button>
             <Button
               type="button"
-              className="bg-destructive hover:bg-destructive text-white cursor-pointer"
+              className="bg-card hover:bg-accent text-foreground cursor-pointer"
               onClick={handleClear}
             >
               Clear
