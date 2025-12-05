@@ -26,11 +26,6 @@ export default defineConfig([
           selector: 'variable',
           format: ['camelCase'],
           leadingUnderscore: 'allow'
-        },
-        {
-          selector: 'variable',
-          modifiers: ['const'],
-          format: ['camelCase']
         }
       ]
     },
