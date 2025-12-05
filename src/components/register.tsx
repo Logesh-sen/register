@@ -51,8 +51,8 @@ type FormData = z.infer<typeof userSchema>;
 interface PostalApi {
   Status: string;
   PostOffice: Array<{
-    district: string;
-    state: string;
+    District: string;
+    State: string;
   }>;
 }
 
@@ -189,7 +189,7 @@ function Register() {
       .then((data: PostalApi[]) => {
         const [response] = data;
         if (response.Status === "Success") {
-          const { district, state } = response.PostOffice[0];
+          const { District: district, State: state } = response.PostOffice[0];
           setSelectedState(state);
           setValue("state", state, { shouldValidate: true });
           trigger("state");

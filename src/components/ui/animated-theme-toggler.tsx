@@ -2,18 +2,18 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
 
-import { cn } from "@/lib/utils"
+import { Cn as cn } from "@/lib/utils"
 
 interface AnimatedThemeTogglerProps
   extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
 }
 
-export const AnimatedThemeToggler = ({
+export function AnimatedThemeToggler({
   className,
   duration = 400,
   ...props
-}: AnimatedThemeTogglerProps) => {
+}: AnimatedThemeTogglerProps) {
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 

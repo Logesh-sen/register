@@ -6,7 +6,7 @@ import {
   useMotionValue,
 } from "motion/react"
 
-import { cn } from "@/lib/utils"
+import { Cn as cn } from "@/lib/utils"
 
 /**
  * A custom pointer component that displays an animated cursor.

@@ -30,10 +30,10 @@ type Props = React.ComponentPropsWithRef<"canvas"> & {
 
 export type ConfettiRef = Api | null
 
-const ConfettiContext = createContext<Api>({} as Api)
+const confettiContext = createContext<Api>({} as Api)
 
-// Define component first
-const ConfettiComponent = forwardRef<ConfettiRef, Props>((props, ref) => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
   const {
     options,
     globalOptions = { resize: true, useWorker: true },
@@ -94,25 +94,24 @@ const ConfettiComponent = forwardRef<ConfettiRef, Props>((props, ref) => {
   }, [manualstart, fire])
 
   return (
-    <ConfettiContext.Provider value={api}>
+    <confettiContext.Provider value={api}>
       <canvas ref={canvasRef} {...rest} />
       {children}
-    </ConfettiContext.Provider>
+    </confettiContext.Provider>
   )
 })
 
-// Set display name immediately
-ConfettiComponent.displayName = "Confetti"
+Confetti.displayName = "Confetti"
 
-// Export as Confetti
-export const Confetti = ConfettiComponent
+export { Confetti }
 
 interface ConfettiButtonProps extends React.ComponentProps<"button"> {
   options?: ConfettiOptions &
     ConfettiGlobalOptions & { canvas?: HTMLCanvasElement }
 }
 
-const ConfettiButtonComponent = ({
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ConfettiButton = ({
   options,
   children,
   ...props
@@ -141,6 +140,6 @@ const ConfettiButtonComponent = ({
   )
 }
 
-ConfettiButtonComponent.displayName = "ConfettiButton"
+ConfettiButton.displayName = "ConfettiButton"
 
-export const ConfettiButton = ConfettiButtonComponent
+export { ConfettiButton }
