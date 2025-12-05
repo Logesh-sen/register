@@ -19,5 +19,20 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'variable',
+          format: ['camelCase'],
+          leadingUnderscore: 'allow'
+        },
+        {
+          selector: 'variable',
+          modifiers: ['const'],
+          format: ['camelCase']
+        }
+      ]
+    },
   },
 ])

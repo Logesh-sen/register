@@ -51,8 +51,8 @@ type FormData = z.infer<typeof userSchema>;
 interface PostalApi {
   Status: string;
   PostOffice: Array<{
-    District: string;
-    State: string;
+    district: string;
+    state: string;
   }>;
 }
 
@@ -189,21 +189,21 @@ function Register() {
       .then((data: PostalApi[]) => {
         const [response] = data;
         if (response.Status === "Success") {
-          const { District, State } = response.PostOffice[0];
-          setSelectedState(State);
-          setValue("state", State, { shouldValidate: true });
+          const { district, state } = response.PostOffice[0];
+          setSelectedState(state);
+          setValue("state", state, { shouldValidate: true });
           trigger("state");
           setTimeout(() => {
             const districts =
-              (districtsData as Record<string, string[]>)[State] || [];
+              (districtsData as Record<string, string[]>)[state] || [];
             const match = districts.find(
               (d) =>
-                d.toLowerCase() === District.toLowerCase() ||
-                d.toLowerCase().includes(District.toLowerCase()) ||
-                District.toLowerCase().includes(d.toLowerCase())
+                d.toLowerCase() === district.toLowerCase() ||
+                d.toLowerCase().includes(district.toLowerCase()) ||
+                district.toLowerCase().includes(d.toLowerCase())
             );
-            setSelectedDistrict(match || District);
-            setValue("district", match || District, { shouldValidate: true });
+            setSelectedDistrict(match || district);
+            setValue("district", match || district, { shouldValidate: true });
             trigger("district");
           }, 500);
         }
